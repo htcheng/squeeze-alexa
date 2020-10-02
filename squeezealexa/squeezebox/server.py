@@ -348,6 +348,11 @@ class Server(object):
                % (urllib.quote(name), int(not resume), int(wipe)))
         self.player_request(cmd, wait=False, player_id=player_id)
 
+    def playlistcontrol_load(self, name, player_id=None):
+        cmd = ("playlistcontrol cmd:load playlist_name:%s"
+               % (urllib.quote(name)))
+        self.player_request(cmd, player_id=player_id)
+
     def change_volume(self, delta, player_id=None):
         if not delta:
             return
